@@ -5,10 +5,25 @@
     xmlns:local="using:MultiCounter"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:MultiCounter.Models"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
+        <GridView ItemsSource="{x:Bind VariableCounts}">
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="models:VariableCount">
+                    <Button Tag="{x:Bind Name}"
+                            Width="660"
+                            Height="400"
+                            Click="Button_Click">
+                        <StackPanel>
+                            <TextBlock Text="{x:Bind Name}"></TextBlock>
+                            <TextBlock Text="{x:Bind Count, Mode=OneWay}"></TextBlock>
+                        </StackPanel>
+                    </Button>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
     </Grid>
 </Page>

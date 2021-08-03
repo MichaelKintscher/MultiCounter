@@ -1,5 +1,7 @@
-﻿using System;
+﻿using MultiCounter.Models;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -22,9 +24,36 @@ namespace MultiCounter
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        /// <summary>
+        /// The collection of variable counts to display buttons for.
+        /// </summary>
+        ObservableCollection<VariableCount> VariableCounts { get; set; }
         public MainPage()
         {
             this.InitializeComponent();
+
+            this.VariableCounts = new ObservableCollection<VariableCount>()
+            {
+                new VariableCount("P1 Gestures"),
+                new VariableCount("P1 Utterances"),
+                new VariableCount("P2 Gestures"),
+                new VariableCount("P2 Utterances")
+            };
+        }
+
+        /// <summary>
+        /// Handles when a button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button)
+            {
+                // Get a reference to the count and increas it by 1.
+                VariableCount count = this.VariableCounts.Where(c => c.Name == button.Tag.ToString()).FirstOrDefault();
+                count.Count++;
+            }
         }
     }
 }
