@@ -10,7 +10,12 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <GridView ItemsSource="{x:Bind VariableCounts}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <GridView Grid.Row="0"
+                  ItemsSource="{x:Bind VariableCounts}">
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="models:VariableCount">
                     <Button Tag="{x:Bind Name}"
@@ -25,5 +30,17 @@
                 </DataTemplate>
             </GridView.ItemTemplate>
         </GridView>
+        <StackPanel Grid.Row="1"
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal">
+            <Button x:Name="Template1Button"
+                    Margin="10"
+                    Content="Gestures/Utterances"
+                    Click="Template1Button_Click"></Button>
+            <Button x:Name="Template2Button"
+                    Margin="10"
+                    Content="Looks/Convo Grounding"
+                    Click="Template2Button_Click"></Button>
+        </StackPanel>
     </Grid>
 </Page>

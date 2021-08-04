@@ -55,5 +55,23 @@ namespace MultiCounter
                 count.Count++;
             }
         }
+
+        private void Template1Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.VariableCounts.Clear();
+            this.VariableCounts.Add(new VariableCount("P1 Gestures"));
+            this.VariableCounts.Add(new VariableCount("P1 Utterances"));
+            this.VariableCounts.Add(new VariableCount("P2 Gestures"));
+            this.VariableCounts.Add(new VariableCount("P2 Utterances"));
+        }
+
+        private void Template2Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.VariableCounts.Clear();
+            this.VariableCounts.Add(new VariableCount("N/A"));
+            this.VariableCounts.Add(new VariableCount("Look Together"));
+            this.VariableCounts.Add(new VariableCount("Convo Grounding"));
+            this.VariableCounts.Add(new VariableCount("Look Across"));
+        }
     }
 }
